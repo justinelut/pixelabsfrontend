@@ -2,6 +2,8 @@
 
 This is the repository for the Pixelabs Agency Website, a fully functional website developed using Next.js and JavaScript. The website serves as an online platform for Pixelabs Agency to showcase their services, portfolio, and provide information to potential clients.
 
+The Olestones Builders & Logistics website can be accessed at the following URL: [https://verixr.com](https://verixr.com).
+
 ## Features
 
 - **Modern and Responsive Design:** The website is designed to be visually appealing and responsive across different devices and screen sizes, providing a seamless user experience.
