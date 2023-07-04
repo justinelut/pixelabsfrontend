@@ -12,7 +12,6 @@ import Link from 'next/link';
 
 const navigation = [
   { name: 'Services', href: '/dashboard/services' },
-  { name: 'Templates', href: '/dashboard/templates' },
   { name: 'Payments', href: '/dashboard/payments' },
 ];
 
