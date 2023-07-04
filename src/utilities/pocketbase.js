@@ -1,3 +1,3 @@
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase('https://api.verixr.com');
+export const pb = new PocketBase(process.env.POCKET_BASE_BACKEND_URL);

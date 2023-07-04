@@ -1,34 +1,28 @@
-import { PostDetail, serverClient } from '@/components'
-import { blogPost } from '@/components/graphql/query'
+import { imageurl } from '@/app/getImageUrls';
+import { PostDetail } from '@/components'
 import { pb } from '@/utilities/pocketbase'
 
-export const dynamic = 'force-dynamic'
-
 export async function generateMetadata({ params }) {
-    const { data } = await serverClient.query({
-        query: blogPost,
-        fetchPolicy: 'network-only',
-        context: {
-            fetchOptions: {
-                next: { revalidate: 0 },
-            },
-        },
-        variables: { slug: params.slug }
-    })
-    const post = data && data.Blogs.docs[0]
+    const data = await pb.collection('Blog').getList(1, 50, {
+        '$autoCancel': false,
+        filter: `slug = "${params.slug}"`,
+        sort: '-created',
+        expand: 'author',
+    });
+    const post = data && data.items[0]
 
     if (post) {
         return {
             title: post.title,
-            description: post.featured,
+            description: post.featured_text,
             openGraph: {
                 title: post.title,
-                description: post.featured,
-                images: post.image.sizes.feature.url,
+                description: post.featured_text,
+                images: `${imageurl(post?.collectionId, post?.id, post?.image)}?thumb=800x300`,
                 twitter: {
                     title: post.title,
-                    description: post.featured,
-                    images: post.image.sizes.feature.url,
+                    description: post.featured_text,
+                    images: `${imageurl(post?.collectionId, post?.id, post?.image)}?thumb=800x300`,
                 }
             },
         }
@@ -37,26 +31,18 @@ export async function generateMetadata({ params }) {
 }
 
 
+export const revalidate = 0
 
 export default async function Post({ params }) {
-    const { data } = await serverClient.query({
-        query: blogPost,
-        fetchPolicy: 'network-only',
-        context: {
-            fetchOptions: {
-                next: { revalidate: 0 },
-            },
-        },
-        variables: { slug: params.slug }
-    })
-    
-    // const records = await pb.collection('Blog').getFullList({
-    //     sort: '-created',
-    // });
+    const data = await pb.collection('Blog').getList(1, 50, {
+        '$autoCancel': false,
+        filter: `slug = "${params.slug}"`,
+        sort: '-created',
+        expand: 'author',
+    });
 
-    // records && console.log(records)
 
     return (
-        <PostDetail post={data} />
+        <PostDetail post={data.items[0]} />
     )
 }

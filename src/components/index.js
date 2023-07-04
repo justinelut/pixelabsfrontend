@@ -20,16 +20,6 @@ import Page from '@/components/Pages/Page'
 import PageAnimations from '@/components/animations/PageAnimations'
 import ComponentsAnimations, {featuredAnimations} from '@/components/animations/ComponentsAnimations'
 import { BeatLoading, HashLoading } from '@/components/Loader'
-import AboutMe from '@/components/profiles/components/AboutMe'
-import FeaturedMe from '@/components/profiles/components/Home'
-import SkillsMe from '@/components/profiles/components/Skills'
-import PortfolioMe from '@/components/profiles/components/Portfolio'
-import EducationMe from '@/components/profiles/components/Education'
-import WorkExperienceMe from '@/components/profiles/components/Workexperience'
-import ProfileMe from '@/components/profiles/Profilecard'
-
-
-import Skills from '@/components/profiles/Skills'
 import NoSearchResults from '@/components/404/noresults'
 
 
@@ -58,13 +48,5 @@ export {
     ComponentsAnimations,
     BeatLoading,
     HashLoading,
-    AboutMe,
-    FeaturedMe,
-    SkillsMe,
-    PortfolioMe,
-    EducationMe,
-    ProfileMe,
-    WorkExperienceMe,
-    Skills,
     NoSearchResults
  }

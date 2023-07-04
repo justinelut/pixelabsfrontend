@@ -10,10 +10,6 @@ import { useSession } from 'next-auth/react'
 
 const links = [
     {
-        href: '/templates',
-        name: 'Templates'
-    },
-    {
         href: '/services',
         name: 'Services'
     },
@@ -27,7 +23,7 @@ const links = [
     },
     {
         href: '/contact',
-        name: 'Contact us'
+        name: 'Contact'
     }  
 ]
 
